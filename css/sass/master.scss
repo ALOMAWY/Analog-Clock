@@ -1,0 +1,423 @@
+* {
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  transition: 0s;
+  text-transform: capitalize;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  min-height: 100vh;
+  font-family: "Nunito", system-ui;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // background-color: black;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: inherits;
+  .clock {
+    width: 700px;
+    height: 700px;
+    border: 2px solid black;
+    // box-shadow: 0 0 10px rgb(0, 0, 0) inset;
+    box-shadow: 0 -15px 15px rgba(0, 0, 0, 0.473),
+      inset 0 -15px 15px rgba(0, 0, 0, 0.473), 0 15px 15px rgba(0, 0, 0, 0.473);
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // background-image: radial-gradient(circle, rgb(58, 58, 58), rgb(0, 0, 0));
+
+    .line {
+      text-align: center;
+      transform: rotate(calc(6deg * var(--n)));
+      inset: 5px;
+      position: absolute;
+
+      span {
+        width: 3px;
+        height: 10px;
+        background-color: rgba(0, 0, 0, 0.411);
+        // transform: rotate(calc(6deg * var(--n)));
+        display: inline-block;
+      }
+    }
+
+    .num {
+      text-align: center;
+      transform: rotate(calc(6deg * var(--n)));
+      inset: 5px;
+      position: absolute;
+
+      b {
+        transform: rotate(calc(-6deg * var(--n)));
+        display: inline-block;
+        color: black;
+        font-size: 1.8rem;
+      }
+    }
+
+    .arrows {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+
+      div {
+        transform-origin: 30% bottom;
+        &:not(.center-dot) {
+          position: absolute;
+          left: 50%;
+          bottom: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      .center-dot {
+        width: 10px;
+        height: 10px;
+        background: rgb(204, 89, 89);
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transform-origin: center center;
+        z-index: 1;
+      }
+      .hour-arrow {
+        width: 5px;
+        height: 25%;
+        background: rgb(161, 160, 160);
+
+        &::before {
+          border: 1.5px solid transparent;
+          border-bottom-color: rgb(161, 160, 160);
+          top: -2.6px;
+        }
+      }
+      .minute-arrow {
+        width: 4px;
+        height: 35%;
+        background: rgb(220, 220, 241);
+        z-index: -1;
+        &::before {
+          border: 1px solid transparent;
+          border-bottom-color: rgb(220, 220, 241);
+          top: -2px;
+        }
+      }
+
+      .hour-arrow,
+      .minute-arrow {
+        &::before {
+          content: "";
+          position: absolute;
+          transform: translateX(-50%);
+          left: 50%;
+        }
+      }
+
+      .second-arrow {
+        width: 3px;
+        height: 36%;
+        background: rgb(204, 89, 89);
+        z-index: -2;
+
+        &::before {
+          content: "";
+          position: absolute;
+          transform: translateX(-50%);
+          bottom: -20%;
+          left: 50%;
+          width: 100%;
+          height: 120%;
+          background-color: rgb(204, 89, 89);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 770px) {
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: inherits;
+    .clock {
+      width: 450px;
+      height: 450px;
+      border: 2px solid black;
+      // box-shadow: 0 0 10px rgb(0, 0, 0) inset;
+      box-shadow: 0 -15px 15px rgba(0, 0, 0, 0.473),
+        inset 0 -15px 15px rgba(0, 0, 0, 0.473),
+        0 15px 15px rgba(0, 0, 0, 0.473);
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      // background-image: radial-gradient(circle, rgb(58, 58, 58), rgb(0, 0, 0));
+
+      .line {
+        text-align: center;
+        transform: rotate(calc(6deg * var(--n)));
+        inset: 5px;
+        position: absolute;
+
+        span {
+          width: 3px;
+          height: 10px;
+          background-color: rgba(0, 0, 0, 0.411);
+          // transform: rotate(calc(6deg * var(--n)));
+          display: inline-block;
+        }
+      }
+
+      .num {
+        text-align: center;
+        transform: rotate(calc(6deg * var(--n)));
+        inset: 5px;
+        position: absolute;
+
+        b {
+          transform: rotate(calc(-6deg * var(--n)));
+          display: inline-block;
+          color: black;
+          font-size: 1.8rem;
+        }
+      }
+
+      .arrows {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+
+        div {
+          transform-origin: 30% bottom;
+          &:not(.center-dot) {
+            position: absolute;
+            left: 50%;
+            bottom: 50%;
+            transform: translateX(-50%);
+          }
+        }
+
+        .center-dot {
+          width: 10px;
+          height: 10px;
+          background: rgb(204, 89, 89);
+          border-radius: 50%;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          transform-origin: center center;
+          z-index: 1;
+        }
+        .hour-arrow {
+          width: 5px;
+          height: 25%;
+          background: rgb(161, 160, 160);
+
+          &::before {
+            border: 1.5px solid transparent;
+            border-bottom-color: rgb(161, 160, 160);
+            top: -2.6px;
+          }
+        }
+        .minute-arrow {
+          width: 4px;
+          height: 35%;
+          background: rgb(220, 220, 241);
+          z-index: -1;
+          &::before {
+            border: 1px solid transparent;
+            border-bottom-color: rgb(220, 220, 241);
+            top: -2px;
+          }
+        }
+
+        .hour-arrow,
+        .minute-arrow {
+          &::before {
+            content: "";
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+          }
+        }
+
+        .second-arrow {
+          width: 3px;
+          height: 36%;
+          background: rgb(204, 89, 89);
+          z-index: -2;
+
+          &::before {
+            content: "";
+            position: absolute;
+            transform: translateX(-50%);
+            bottom: -20%;
+            left: 50%;
+            width: 100%;
+            height: 120%;
+            background-color: rgb(204, 89, 89);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: inherits;
+    .clock {
+      width: 200px;
+      height: 200px;
+      border: 2px solid black;
+      // box-shadow: 0 0 10px rgb(0, 0, 0) inset;
+      box-shadow: 0 -15px 15px rgba(0, 0, 0, 0.473),
+        inset 0 -15px 15px rgba(0, 0, 0, 0.473),
+        0 15px 15px rgba(0, 0, 0, 0.473);
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      // background-image: radial-gradient(circle, rgb(58, 58, 58), rgb(0, 0, 0));
+
+      .line {
+        text-align: center;
+        transform: rotate(calc(6deg * var(--n)));
+        inset: -10px;
+        position: absolute;
+
+        span {
+          width: 1px;
+          height: 3px;
+          background-color: rgba(0, 0, 0, 0.411);
+          // transform: rotate(calc(6deg * var(--n)));
+          display: inline-block;
+        }
+      }
+
+      .num {
+        text-align: center;
+        transform: rotate(calc(6deg * var(--n)));
+        inset: 2px;
+        position: absolute;
+
+        b {
+          transform: rotate(calc(-6deg * var(--n)));
+          display: inline-block;
+          color: black;
+          font-size: 0.8rem;
+        }
+      }
+
+      .arrows {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+
+        div {
+          transform-origin: 30% bottom;
+          &:not(.center-dot) {
+            position: absolute;
+            left: 50%;
+            bottom: 50%;
+            transform: translateX(-50%);
+          }
+        }
+
+        .center-dot {
+          width: 5px;
+          height: 5px;
+          background: rgb(204, 89, 89);
+          border-radius: 50%;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          transform-origin: center center;
+          z-index: 1;
+        }
+        .hour-arrow {
+          width: 3px;
+          height: 20%;
+          background: rgb(161, 160, 160);
+
+          &::before {
+            border: 1.5px solid transparent;
+            border-bottom-color: rgb(161, 160, 160);
+            top: -2.6px;
+          }
+        }
+        .minute-arrow {
+          width: 2px;
+          height: 30%;
+          background: rgb(220, 220, 241);
+          z-index: -1;
+          &::before {
+            border: 1px solid transparent;
+            border-bottom-color: rgb(220, 220, 241);
+            top: -2px;
+          }
+        }
+
+        .hour-arrow,
+        .minute-arrow {
+          &::before {
+            content: "";
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+          }
+        }
+
+        .second-arrow {
+          width: 1px;
+          height: 36%;
+          background: rgb(204, 89, 89);
+          z-index: -2;
+
+          &::before {
+            content: "";
+            position: absolute;
+            transform: translateX(-50%);
+            bottom: -20%;
+            left: 50%;
+            width: 100%;
+            height: 120%;
+            background-color: rgb(204, 89, 89);
+          }
+        }
+      }
+    }
+  }
+}
